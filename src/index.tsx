@@ -1,15 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(
+const MOUNT_NODE = document.getElementById("root") as HTMLElement;
+
+interface Props {
+  Component: typeof App;
+}
+
+const ConnectedApp = ({ Component }: Props) => (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Component />
+  </React.StrictMode>
 );
+
+const render = (Component: typeof App) => {
+  ReactDOM.render(<ConnectedApp Component={Component} />, MOUNT_NODE);
+};
+
+render(App);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
