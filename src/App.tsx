@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./styles.css";
-import FirstState from "./demo/firstState";
-import Count from "./demo/count";
+import SimpleCount from "./demo/simpleCount";
+import CountLabel from "./demo/countLabel";
+import UseCallback from "./demo/useCallback";
+import UseMemo from "./demo/useMemo";
+import Redux from "./demo/redux";
+import ControlComp from "./demo/controlComp";
 
 interface IRoutes {
   name: string;
@@ -16,13 +20,34 @@ interface IRoutes {
 
 const routes: IRoutes[] = [
   {
-    name: "demo-FirstState",
-    component: <FirstState />,
+    name: "demo-simpleCount",
+    component: <SimpleCount />,
     additionalRoute: "",
   },
   {
-    name: "demo-Count",
-    component: <Count />,
+    name: "demo-countLabel",
+    component: <CountLabel />,
+    additionalRoute: "",
+  },
+  {
+    name: "demo-useCallback",
+    component: <UseCallback />,
+    additionalRoute: "",
+  },
+  {
+    name: "demo-useMemo",
+    component: <UseMemo />,
+    additionalRoute: "",
+  },
+
+  {
+    name: "demo-redux",
+    component: <Redux />,
+    additionalRoute: "",
+  },
+  {
+    name: "demo-controlComp",
+    component: <ControlComp />,
     additionalRoute: "",
   },
 ];

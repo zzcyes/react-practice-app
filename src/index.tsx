@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const MOUNT_NODE = document.getElementById("root") as HTMLElement;
 
@@ -12,7 +14,9 @@ interface Props {
 
 const ConnectedApp = ({ Component }: Props) => (
   <React.StrictMode>
-    <Component />
+    <Provider store={store}>
+      <Component />
+    </Provider>
   </React.StrictMode>
 );
 
