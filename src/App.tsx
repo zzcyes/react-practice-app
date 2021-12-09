@@ -1,11 +1,12 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import "./styles.css";
-import SimpleCount from "./demo/simpleCount";
-import CountLabel from "./demo/countLabel";
-import UseCallback from "./demo/useCallback";
-import UseMemo from "./demo/useMemo";
-import Redux from "./demo/redux";
-import ControlComp from "./demo/controlComp";
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import './styles.css';
+import SimpleCount from './features/demo/simpleCount';
+import CountLabel from './features/demo/countLabel';
+import UseCallback from './features/demo/useCallback';
+import UseMemo from './features/demo/useMemo';
+import Redux from './features/demo/redux';
+import ControlComp from './features/demo/controlComp';
 
 interface IRoutes {
   name: string;
@@ -20,35 +21,35 @@ interface IRoutes {
 
 const routes: IRoutes[] = [
   {
-    name: "demo-simpleCount",
+    name: 'demo-simpleCount',
     component: <SimpleCount />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
   {
-    name: "demo-countLabel",
+    name: 'demo-countLabel',
     component: <CountLabel />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
   {
-    name: "demo-useCallback",
+    name: 'demo-useCallback',
     component: <UseCallback />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
   {
-    name: "demo-useMemo",
+    name: 'demo-useMemo',
     component: <UseMemo />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
 
   {
-    name: "demo-redux",
+    name: 'demo-redux',
     component: <Redux />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
   {
-    name: "demo-controlComp",
+    name: 'demo-controlComp',
     component: <ControlComp />,
-    additionalRoute: "",
+    additionalRoute: '',
   },
 ];
 
@@ -60,7 +61,7 @@ const App = () => {
           {routes.map((item: IRoutes) => (
             <li key={item.name}>
               <Link
-                to={`/${item.name.replace(" ", "/")}${item.additionalRoute}`}
+                to={`/${item.name.replace(' ', '/')}${item.additionalRoute}`}
               >
                 {item.name}
               </Link>
@@ -72,7 +73,7 @@ const App = () => {
             {routes.map((item: IRoutes) => (
               <Route
                 key={item.name}
-                path={`/${item.name.replace(" ", "/")}${item.additionalRoute}`}
+                path={`/${item.name.replace(' ', '/')}${item.additionalRoute}`}
                 element={item.component}
               ></Route>
             ))}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo } from 'react';
 
 interface Value {
   amount: number;
@@ -12,28 +12,28 @@ interface PriceInputProps {
 }
 
 function PriceInput({
-  value = { amount: 0, currency: "rmb" },
+  value = { amount: 0, currency: 'rmb' },
   onChange = () => {},
 }: PriceInputProps) {
   const handleChange = useCallback(
-    (deltaValue) => {
-      console.log("deltaValue~~~", deltaValue);
+    deltaValue => {
+      console.log('deltaValue~~~', deltaValue);
       onChange({
         ...value,
         ...deltaValue,
       });
     },
-    [value, onChange]
+    [value, onChange],
   );
   return (
     <div>
       <input
         value={value.amount}
-        onChange={(evt) => handleChange({ amount: evt.target.value })}
+        onChange={evt => handleChange({ amount: evt.target.value })}
       />
       <select
         value={value.currency}
-        onChange={(evt) => handleChange({ currency: evt.target.value })}
+        onChange={evt => handleChange({ currency: evt.target.value })}
       >
         <option value="rmb">RMB</option>
         <option value="dollar">Dollar</option>
@@ -43,9 +43,9 @@ function PriceInput({
 }
 
 function ControlComp() {
-  const [value, setValue] = useState<Value>({ amount: 0, currency: "rmb" });
+  const [value, setValue] = useState<Value>({ amount: 0, currency: 'rmb' });
   const onChange = (changeValue: Value) => {
-    console.log("changeValue~~~", changeValue);
+    console.log('changeValue~~~', changeValue);
     setValue(changeValue);
   };
   return (
