@@ -36,7 +36,12 @@ function UseMemo() {
           但在输入框输入文本时，观察打印结果，控制台打印了“执行了showCount"，意味着“showCount”函数重新执行计算了
         </p>
         <div style={{ marginTop: 8 }}>
-          <button onClick={() => setCount(count + 1)}>增加</button>
+          <button
+            style={{ color: 'black' }}
+            onClick={() => setCount(count + 1)}
+          >
+            增加
+          </button>
           <br />
           <input value={name} onChange={e => setName(e.target.value)} />
         </div>

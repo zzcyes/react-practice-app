@@ -1,0 +1,29 @@
+.more-items-trigger {
+    color: #2175bc;
+}
+
+span.user-name {
+    color: #2175bc;
+}
+
+span.user-name:after {
+    content: ", ";
+}
+
+span.user-name:last-child:after {
+    content: "";
+}
+
+.user-list-row {
+    display: grid;
+    grid-template-columns: 80px 160px 280px;
+}
+
+.user-list-row-head {
+    font-weight: bold;
+}
+
+.user-list-row span {
+    border: 1px solid #eee;
+    padding: 5px;
+}

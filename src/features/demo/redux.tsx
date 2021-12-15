@@ -1,25 +1,27 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { InitialState } from './redux/initialState';
-import { incrementCount, decrementCount } from 'features/demo/redux/actions';
+import {
+  incrementCount,
+  decrementCount,
+  fetchDataBegin,
+  fetchDataSuccess,
+  fetchDataFailure,
+} from 'features/demo/redux/actions';
 import { State } from 'common/rootReducer';
 
 function fetchData() {
   return (dispatch: any) => {
-    dispatch({ type: 'FETCH_DATA_BEGIN' });
+    dispatch(fetchDataBegin());
     fetch('https://www.baidu.com')
       .then(res => {
         console.log('FETCH_DATA_SUCCESS', res);
         setTimeout(() => {
-          dispatch({
-            type: 'FETCH_DATA_SUCCESS',
-            data: "{data:'请求成功了！'}",
-          });
+          dispatch(fetchDataSuccess("{data:'请求成功了！'}"));
         }, 1500);
       })
       .catch(err => {
         console.log('FETCH_DATA_FAILURE', err);
-        dispatch({ type: 'FETCH_DATA_FAILURE', error: err.toString() });
+        dispatch(fetchDataFailure(err.toString()));
       });
   };
 }
@@ -29,11 +31,10 @@ function Rudux() {
   const [step, setStep] = useState<number>(1);
   // 绑定到 state 的变化
   const count = useSelector((state: State) => state.demo.value);
-  const data = useSelector((state: InitialState) => state.data);
-  const pending = useSelector((state: InitialState) => state.pending);
-  const error = useSelector((state: InitialState) => state.error);
+  const data = useSelector((state: State) => state.demo.data);
+  const pending = useSelector((state: State) => state.demo.pending);
+  const error = useSelector((state: State) => state.demo.error);
 
-  console.log('count>>>', count);
   // 获得当前 store 的 dispatch 方法
   const dispatch = useDispatch();
 

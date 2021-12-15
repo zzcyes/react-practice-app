@@ -1,7 +1,13 @@
 import initialState from './initialState';
-import { reducer as computedCount, Action } from './computedCount';
+import {
+  reducer as computedCount,
+  Action as computedCountAction,
+} from './computedCount';
+import { reducer as fetchData, Action as fetchDataAction } from './fetchData';
 
-const reducers = [computedCount];
+interface Action extends fetchDataAction, computedCountAction {}
+
+const reducers = [computedCount, fetchData];
 
 export default function reducer(state = initialState, action: Action) {
   let newState;

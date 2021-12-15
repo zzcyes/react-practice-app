@@ -7,6 +7,9 @@ import UseCallback from './features/demo/useCallback';
 import UseMemo from './features/demo/useMemo';
 import Redux from './features/demo/redux';
 import ControlComp from './features/demo/controlComp';
+import ListWithMore from './features/demo/listWithMore';
+import UseKeyPress from './features/demo/useKeyPress';
+import TestArrayState from './features/demo/testArrayState';
 
 interface IRoutes {
   name: string;
@@ -49,6 +52,21 @@ const routes: IRoutes[] = [
   {
     name: 'demo-controlComp',
     component: <ControlComp />,
+    additionalRoute: '',
+  },
+  {
+    name: 'demo-listWithMore',
+    component: <ListWithMore />,
+    additionalRoute: '',
+  },
+  {
+    name: 'demo-useKeyPress',
+    component: <UseKeyPress />,
+    additionalRoute: '',
+  },
+  {
+    name: 'demo-testArrayState',
+    component: <TestArrayState />,
     additionalRoute: '',
   },
 ];
