@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import configStore from 'common/configStore';
 import 'antd/dist/antd.css';
 
+console.info('ReactDOM', ReactDOM);
+
 // @ts-ignore
 const store = configStore();
 

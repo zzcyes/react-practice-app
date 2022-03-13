@@ -10,6 +10,7 @@ import ControlComp from './features/demo/controlComp';
 import ListWithMore from './features/demo/listWithMore';
 import UseKeyPress from './features/demo/useKeyPress';
 import TestArrayState from './features/demo/testArrayState';
+import UseEffect from './features/demo/useEffect';
 
 interface IRoutes {
   name: string;
@@ -67,6 +68,11 @@ const routes: IRoutes[] = [
   {
     name: 'demo-testArrayState',
     component: <TestArrayState />,
+    additionalRoute: '',
+  },
+  {
+    name: 'demo-useEffect',
+    component: <UseEffect />,
     additionalRoute: '',
   },
 ];
