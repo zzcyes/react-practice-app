@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    /* height: 40px; */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    padding: 20px 0px;
+}
+
+.button {
+    min-width: 120px;
+    color: black;
+}

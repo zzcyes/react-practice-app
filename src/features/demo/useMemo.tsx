@@ -42,8 +42,20 @@ function UseMemo() {
           >
             增加
           </button>
+
           <br />
-          <input value={name} onChange={e => setName(e.target.value)} />
+          <input
+            style={{ color: 'black' }}
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <br />
+          <button
+            style={{ color: 'black' }}
+            onClick={() => setCount(count - 1)}
+          >
+            减少
+          </button>
         </div>
       </div>
       <div style={{ backgroundColor: '#e74c3c', padding: 12 }}>

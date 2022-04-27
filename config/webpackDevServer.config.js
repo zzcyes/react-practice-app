@@ -13,6 +13,19 @@ const host = process.env.HOST || '0.0.0.0';
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
+const http = require('http');
+
+const getEvnFilesJSON = req => {
+    console.debug(req);
+    console.debug(req.req);
+    console.debug(req.url);
+    console.debug(req.headers);
+    console.debug(req.method);
+    // fs.writeFileSync('./param', JSON.stringify(param, null, 4), 'utf-8');
+    const envStr = fs.readFileSync('./test.env.json', 'utf-8');
+    const { protocol, host, port } = JSON.parse(envStr);
+    return { protocol, host, port };
+};
 
 module.exports = function(proxy, allowedHost) {
     return {
@@ -126,54 +139,28 @@ module.exports = function(proxy, allowedHost) {
             // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
             app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
         },
-        // proxy: {
-        //     '/login': {
-        //         target: 'http://192.168.13.199:38001',
-        //         changeOrigin: true,
-        //     },
-        //     '/iapp': {
-        //         target: 'http://192.168.13.199:30888',
-        //         changeOrigin: true,
-        //     },
-        //     '/aios': {
-        //         target: 'http://192.168.13.199:30886',
-        //         changeOrigin: true,
-        //     },
-        //     '/eva': {
-        //         target: 'http://192.168.13.105:30889',
-        //         changeOrigin: true,
-        //     },
-        //     '/upload': {
-        //         target: 'http://192.168.13.105:38001',
-        //     },
-        //     '/data': {
-        //         target: 'http://www.weather.com.cn',
-        //         changeOrigin: true,
-        //     },
-        //     '/api/v1/query': {
-        //         target: 'http://192.168.13.199:30900',
-        //         changeOrigin: true,
-        //     },
-        //     '/api/datasources': {
-        //         target: 'http://192.168.13.199:32324',
-        //         changeOrigin: true,
-        //     },
-        //     '/mqtt': {
-        //         target: 'ws://192.168.13.199:30223',
-        //         changeOrigin: true,
-        //         ws: true,
-        //         secure: false,
-        //         pathRewrite: {
-        //             '^/mqtt/': '',
-        //         },
-        //     },
-        //     '/grafana/login': {
-        //         target: 'http://192.168.13.199:32324',
-        //         changeOrigin: true,
-        //         pathRewrite: {
-        //             '^/grafana': '',
-        //         },
-        //     },
-        // },
+        proxy: {
+            '/test': {
+                target: 'http://47.115.13.227:8001',
+                changeOrigin: true,
+                router: getEvnFilesJSON,
+            },
+            // '/mqtt': {
+            //     target: 'ws://192.168.13.199:30223',
+            //     changeOrigin: true,
+            //     ws: true,
+            //     secure: false,
+            //     pathRewrite: {
+            //         '^/mqtt/': '',
+            //     },
+            // },
+            // '/grafana/login': {
+            //     target: 'http://192.168.13.199:32324',
+            //     changeOrigin: true,
+            //     pathRewrite: {
+            //         '^/grafana': '',
+            //     },
+            // },
+        },
     };
 };

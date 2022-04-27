@@ -11,6 +11,8 @@ import ListWithMore from './features/demo/listWithMore';
 import UseKeyPress from './features/demo/useKeyPress';
 import TestArrayState from './features/demo/testArrayState';
 import UseEffect from './features/demo/useEffect';
+import TestDevServerProxy from './features/demo/testDevServerProxy';
+import UseSelector from './features/react-redux-demo/useSelector';
 
 interface IRoutes {
   name: string;
@@ -73,6 +75,16 @@ const routes: IRoutes[] = [
   {
     name: 'demo-useEffect',
     component: <UseEffect />,
+    additionalRoute: '',
+  },
+  {
+    name: 'test-devserver-proxy',
+    component: <TestDevServerProxy />,
+    additionalRoute: '',
+  },
+  {
+    name: 'use-selector',
+    component: <UseSelector />,
     additionalRoute: '',
   },
 ];

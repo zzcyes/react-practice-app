@@ -18,25 +18,25 @@ const useKeyPress = (domNode = document.body) => {
   return key;
 };
 
-const useKeyDoublePress = (domNode = document.body) => {
-  const [keys, setKeys] = useState([]);
-  useEffect(() => {
-    const handleKeyPress = (evt: any) => {
-      setKeys((prevKeys: any) => {
-        if (prevKeys.length !== 2) {
-          return [...prevKeys, evt.keyCode];
-        } else {
-          return prevKeys;
-        }
-      });
-    };
-    domNode.addEventListener('keypress', handleKeyPress);
-    return () => {
-      domNode.removeEventListener('keypress', handleKeyPress);
-    };
-  }, [domNode]);
-  return keys;
-};
+// const useKeyDoublePress = (domNode = document.body) => {
+//   const [keys, setKeys] = useState([]);
+//   useEffect(() => {
+//     const handleKeyPress = (evt: any) => {
+//       setKeys((prevKeys: any) => {
+//         if (prevKeys.length !== 2) {
+//           return [...prevKeys, evt.keyCode];
+//         } else {
+//           return prevKeys;
+//         }
+//       });
+//     };
+//     domNode.addEventListener('keypress', handleKeyPress);
+//     return () => {
+//       domNode.removeEventListener('keypress', handleKeyPress);
+//     };
+//   }, [domNode]);
+//   return keys;
+// };
 
 export default function UseKeyPressExample() {
   const key = useKeyPress();
